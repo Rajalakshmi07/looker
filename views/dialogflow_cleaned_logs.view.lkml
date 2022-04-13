@@ -106,6 +106,16 @@ view: dialogflow_cleaned_logs {
     sql: ${TABLE}.week_number ;;
   }
 
+  dimension: QueryDistribution {
+    case: {
+      when: {
+        sql: ${TABLE}.isFallback = no ;;
+        label: "HandledQueries"
+      }
+      else: "UnhandledQueries"
+    }
+  }
+
   measure: count {
     type: count
     drill_fields: []
