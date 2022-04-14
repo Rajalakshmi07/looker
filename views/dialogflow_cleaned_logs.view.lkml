@@ -106,8 +106,25 @@ view: dialogflow_cleaned_logs {
     sql: ${TABLE}.week_number ;;
   }
 
+  dimension: sentiment_distribution{
+    type: string
+    sql:  CASE WHEN ${magnitude} > 3 and ${sentiment_score} between 0.25 and 1 THEN 'Positive'
+               WHEN ${magnitude} <= 3 and ${sentiment_score} between 0.25 and 1 THEN 'Partially Positive'
+               WHEN ${magnitude} <= 3 and ${sentiment_score} between -1 and -0.25 THEN 'Partially Negative'
+               WHEN ${magnitude} > 3 and ${sentiment_score} between -1 and -0.25 THEN 'Negative'
+               ELSE "Neutral"
+          End;;
+  }
 
-
+  dimension: Sentiment_ordering {
+    type: number
+    sql:  CASE WHEN ${sentiment_distribution}= 'Negative' THEN 1
+               WHEN ${sentiment_distribution}='Partially Negative' THEN 2
+               WHEN ${sentiment_distribution}='Partially Positive' THEN 4
+               WHEN ${sentiment_distribution}='Positive' THEN 5
+               ELSE 3
+          END;;
+  }
 
   measure: count {
     type: count
