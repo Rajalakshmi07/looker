@@ -108,6 +108,7 @@ view: dialogflow_cleaned_logs {
 
 
 
+
   measure: count {
     type: count
     drill_fields: []
