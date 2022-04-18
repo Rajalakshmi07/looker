@@ -96,6 +96,7 @@ view: dialogflow_cleaned_logs {
       week,
       month,
       quarter,
+      hour_of_day,
       year
     ]
     sql: ${TABLE}.time_stamp ;;
