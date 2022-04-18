@@ -126,6 +126,11 @@ view: dialogflow_cleaned_logs {
                ELSE 3
           END;;
   }
+  measure: Avg_Sentiment_Score{
+    type: average
+    sql: ${TABLE}.sentiment_score ;;
+    value_format: "0.##"
+  }
 
   measure: count {
     type: count
