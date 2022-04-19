@@ -132,6 +132,18 @@ view: dialogflow_cleaned_logs {
     value_format: "0.##"
   }
 
+  measure: distinct_session_id{
+    type: count_distinct
+    sql: ${session_id} ;;
+  }
+  measure: distinct_date{
+    type: count_distinct
+    sql: ${date_raw} ;;
+  }
+  measure: Avg_ses_per_day{
+    type:number
+    sql: ${distinct_session_id}/ NULLIF(${distinct_date},0) ;;
+  }
   measure: count {
     type: count
     drill_fields: []
