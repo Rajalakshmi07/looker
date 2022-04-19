@@ -154,7 +154,7 @@ view: dialogflow_cleaned_logs {
   }
   measure: query_distribution{
     type: string
-    sql: if(${is_fallback},"UnHandled Query","Handled Query" ;;
+    sql: if(${is_fallback},"UnHandled Query","Handled Query" );;
   }
 
 
