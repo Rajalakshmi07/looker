@@ -152,6 +152,13 @@ view: dialogflow_cleaned_logs {
     type:number
     sql: ${queries_count}/NULLIF(${distinct_session_id},0) ;;
   }
+  measure: query_distribution{
+    type: string
+    sql: if(${is_fallback},"UnHandled Query","Handled Query" ;;
+  }
+
+
+
   measure: count {
     type: count
     drill_fields: []
