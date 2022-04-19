@@ -144,6 +144,14 @@ view: dialogflow_cleaned_logs {
     type:number
     sql: ${distinct_session_id}/ NULLIF(${distinct_date},0) ;;
   }
+  measure: queries_count{
+    type:count_distinct
+    sql: ${response_id} ;;
+  }
+  measure: Avg_Query_per_ses{
+    type:number
+    sql: ${queries_count}/NULLIF(${distinct_session_id},0) ;;
+  }
   measure: count {
     type: count
     drill_fields: []
