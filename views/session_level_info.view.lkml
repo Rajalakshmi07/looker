@@ -27,9 +27,9 @@ view: session_level_info {
     sql: ${TABLE}.second_last_exit_intent ;;
   }
 
-  dimension: session_duration {
+  dimension: session_duration_minute {
     type: number
-    sql: ${TABLE}.session_duration ;;
+    sql: ${TABLE}.session_duration_minute ;;
   }
 
   dimension: session_id {
