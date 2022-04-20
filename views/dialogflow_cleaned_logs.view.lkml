@@ -166,7 +166,11 @@ view: dialogflow_cleaned_logs {
            else 1
            end ) ;;
   }
-
+  measure: Sucess_rate {
+    type: number
+    sql: ${Handled_count}/${count} ;;
+    value_format_name: percent_2
+  }
 
 
   measure: count {
