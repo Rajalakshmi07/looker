@@ -152,7 +152,20 @@ view: dialogflow_cleaned_logs {
     type:number
     sql: ${queries_count}/NULLIF(${distinct_session_id},0) ;;
   }
-
+  measure: Unhandled_count {
+    type: number
+    sql: sum (case
+           when ${is_fallback} then 1
+           else 0
+           end ) ;;
+  }
+  measure: Handled_count {
+    type: number
+    sql: sum (case
+           when ${is_fallback} then 0
+           else 1
+           end ) ;;
+  }
 
 
 
