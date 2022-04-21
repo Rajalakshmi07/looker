@@ -42,6 +42,9 @@ view: session_level_info {
     timeframes: [
       raw,
       time,
+      hour_of_day,
+      minute,
+      second,
       date,
       week,
       month,
