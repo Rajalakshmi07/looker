@@ -122,7 +122,7 @@ view: dialogflow_cleaned_logs {
           WHEN ${time_stamp_hour_of_day}=14 THEN "2pm"
           WHEN ${time_stamp_hour_of_day}=15  THEN "3pm"
           WHEN ${time_stamp_hour_of_day}=16 THEN "4pm"
-          WHEN ${time_stamp_hour_of_day}}=17  THEN "5pm"
+          WHEN ${time_stamp_hour_of_day}=17  THEN "5pm"
           WHEN ${time_stamp_hour_of_day}=18 THEN "6pm"
           WHEN ${time_stamp_hour_of_day}=19  THEN "7pm"
           WHEN ${time_stamp_hour_of_day}=20  THEN "8pm"
