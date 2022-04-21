@@ -51,10 +51,7 @@ view: session_level_info {
     sql: ${TABLE}.session_start ;;
   }
 
-  dimension: minute_timestamp {
-    type: number
-    sql: floor(${session_start_time},(60*60)/(60)) ;;
-  }
+
   measure: count {
     type: count
     drill_fields: []
