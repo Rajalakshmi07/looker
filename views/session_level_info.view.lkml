@@ -53,7 +53,7 @@ view: session_level_info {
 
   dimension: minute_timestamp {
     type: number
-    sql: floor(MOD(${session_start_time},(60*60))/(60)) ;;
+    sql: floor(${session_start_time},(60*60)/(60)) ;;
   }
   measure: count {
     type: count
