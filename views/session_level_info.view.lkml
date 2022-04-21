@@ -43,8 +43,6 @@ view: session_level_info {
       raw,
       time,
       hour_of_day,
-      minute,
-      second,
       date,
       week,
       month,
