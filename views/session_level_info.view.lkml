@@ -32,6 +32,12 @@ view: session_level_info {
     sql: ${TABLE}.session_duration ;;
   }
 
+  dimension: session_minutes {
+    type: number
+    sql: ${TABLE}.session_minutes ;;
+  }
+
+
   dimension: session_id {
     type: string
     sql: ${TABLE}.session_id ;;
