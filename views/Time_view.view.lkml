@@ -12,6 +12,7 @@ view: time_view {
   }
   dimension: session_id {
     type: string
+    primary_key: yes
     sql: ${TABLE}.session_id ;;
   }
   dimension: session_duration_sec {
@@ -44,9 +45,16 @@ view: time_view {
         End ;;
   }
 
-  measure: avg_duration {
+  measure: avg_duration_hidden {
     type: average_distinct
     sql_distinct_key: ${session_id} ;;
+    sql:(${session_duration_sec}/86400.0) ;;
+    value_format: "[mm]\" m \"ss\" s\""
+    hidden: yes
+  }
+
+  measure: avg_duration {
+    type: average
     sql:(${session_duration_sec}/86400.0) ;;
     value_format: "[mm]\" m \"ss\" s\""
   }
