@@ -48,7 +48,7 @@ view: time_view {
     type: number
     sql: mod(cast(avg(${session_duration_sec}) as integer),60)  ;;
   }
-   measure: avg_minute {
+  measure: avg_minute {
      type: number
      sql: mod(cast(avg(${session_duration_min}) as integer),60) ;;
    }
