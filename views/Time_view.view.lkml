@@ -32,5 +32,15 @@ view: time_view {
       Else ">7 Min"
       End ;;
   }
+  dimension: Session_Duration_Distribution_ordering {
+    type: number
+    sql:  case
+        when ${session_Duration_distribution} = "<1 Min" then 1
+        when ${session_Duration_distribution} = "1-3 Min" then 2
+        when ${session_Duration_distribution} = "3-5 Min" then 3
+        when ${session_Duration_distribution} = "5-7 Min" then 4
+        else 5
+        End ;;
+  }
 
 }
