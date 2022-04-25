@@ -22,6 +22,7 @@ view: time_view {
     type: number
     sql: timestamp_diff(${TABLE}.max_timestamp,${TABLE}.min_timestamp,minute) ;;
   }
+
   dimension: session_Duration_distribution{
     type: string
     sql: case
