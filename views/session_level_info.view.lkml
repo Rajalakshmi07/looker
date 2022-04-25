@@ -65,4 +65,10 @@ view: session_level_info {
     drill_fields: []
   }
 
+  measure: avg_session_duration {
+    type: average
+    sql:(${session_duration}/86400.0) ;;
+    value_format: "[mm]\" m \"ss\" s\""
+  }
+
 }
