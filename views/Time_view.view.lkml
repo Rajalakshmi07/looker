@@ -44,14 +44,11 @@ view: time_view {
         End ;;
   }
 
-  measure: avg_second {
-    type: number
-    sql: mod(cast(avg(${session_duration_sec}) as integer),60)  ;;
-  }
-  measure: avg_minute {
-     type: number
-     sql: mod(cast(avg(${session_duration_min}) as integer),60) ;;
-   }
 
+  measure: avgduration {
+    type:  average
+    sql: ${session_duration_sec}/86400 ;;
+    value_format: "[mm]\" min\" ss \" sec\""
+  }
 
 }
