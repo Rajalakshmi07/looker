@@ -45,10 +45,5 @@ view: time_view {
   }
 
 
-  measure: avgduration {
-    type:  average
-    sql: ${session_duration_sec}/86400 ;;
-    value_format: "[mm]\" min\" ss \" sec\""
-  }
 
 }
