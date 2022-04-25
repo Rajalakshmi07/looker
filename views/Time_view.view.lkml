@@ -44,6 +44,12 @@ view: time_view {
         End ;;
   }
 
+  measure: avg_duration {
+    type: average_distinct
+    sql_distinct_key: ${session_id} ;;
+    sql:(${session_duration_sec}/86400.0) ;;
+    value_format: "[mm]\" m \"ss\" s\""
+  }
 
 
 }
