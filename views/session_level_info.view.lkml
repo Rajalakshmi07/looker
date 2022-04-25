@@ -38,6 +38,7 @@ view: session_level_info {
   }
 
 
+
   dimension: session_id {
     type: string
     sql: ${TABLE}.session_id ;;
@@ -63,4 +64,5 @@ view: session_level_info {
     type: count
     drill_fields: []
   }
+
 }

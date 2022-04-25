@@ -44,4 +44,20 @@ view: time_view {
         End ;;
   }
 
+  measure: distinct_session_id {
+    type: count_distinct
+    sql: ${session_id} ;;
+  }
+  measure: sum_ses_dur_sec {
+    type: sum
+    sql: ${session_duration_sec} ;;
+  }
+  measure: avg_session_dur_sec {
+    type: number
+    sql: ${sum_ses_dur_sec}/${distinct_session_id} ;;
+  }
+  measure: avg_session_dur_sec2 {
+    type: number
+    sql: mod((cast(${avg_session_dur_sec}) as integer),60)  ;;
+  }
 }
