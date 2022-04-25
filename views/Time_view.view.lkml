@@ -56,6 +56,10 @@ view: time_view {
     type: number
     sql: ${sum_ses_dur_sec}/${distinct_session_id} ;;
   }
+  measure: avg_session_dur_sec3 {
+    type: number
+    sql: ${sum_ses_dur_sec}/${distinct_session_id} ;;
+  }
   measure: avg_session_dur_sec2 {
     type: number
     sql: mod((cast(${avg_session_dur_sec}) as integer),60)  ;;
