@@ -29,7 +29,8 @@ view: time_view {
       when ${session_duration_sec} >= 60 and ${session_duration_sec} < 180 then "1-3 Min"
       when ${session_duration_sec} >= 180 and ${session_duration_sec} < 300 then "3-5 Min"
       when ${session_duration_sec} >= 300 and ${session_duration_sec} < 420 then "5-7 Min"
-      Else ">7 Min" ;;
+      Else ">7 Min"
+      End ;;
   }
 
 }
