@@ -4,8 +4,8 @@ view: time_view {
       column: session_id {field:dialogflow_cleaned_logs.session_id}
 
       column: timestamp {field:dialogflow_cleaned_logs.time_stamp_raw }
-      derived_column: min_timestamp {sql: min{timestamp} over partition by session_id ;;}
-      derived_column: max_timestamp {sql: max{timestamp} over partition by session_id ;;}
+      derived_column: min_timestamp {sql: min(timestamp) over (partition by session_id );;}
+      derived_column: max_timestamp {sql: max(timestamp) over (partition by session_id );;}
       bind_all_filters: yes
   }
 
