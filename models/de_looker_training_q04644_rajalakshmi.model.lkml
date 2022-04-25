@@ -12,4 +12,10 @@ persist_with: de_looker_training_q04644_rajalakshmi_default_datagroup
 
 explore: session_level_info {}
 
-explore: dialogflow_cleaned_logs {}
+explore: dialogflow_cleaned_logs {
+  join: time_view {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${dialogflow_cleaned_logs.session_id}=${time_view.session_id}  ;;
+  }
+}
