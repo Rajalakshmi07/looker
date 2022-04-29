@@ -28,9 +28,17 @@ view: deflection {
     type: string
     sql:  case
           when ( ${fallback_count}=0 and ${agent_count}=0 ) then "Number of sessions that were successfully handled with bot end to end"
-          when (${fallback_count}>=1 and ${agent_count}=0 ) then "Number of sessions that were partially handled by the bot and had atleast one query unanswered but not transfered to live agent"
-          when (${fallback_count}>=1 and ${agent_count} >=1) then "Number of sessions that were transferred to live agent and has atleast one fallback query"
+          when (${fallback_count}>0 and ${agent_count}=0 ) then "Number of sessions that were partially handled by the bot and had atleast one query unanswered but not transfered to live agent"
+          when (${fallback_count}>0 and ${agent_count} >0) then "Number of sessions that were transferred to live agent and has atleast one fallback query"
           else "Number of sessions that were transferred to live agent as per the expected flow but had not fallback query"
+          end ;;
+  }
+  dimension : deflection_rate{
+    type: string
+    sql:  case
+          when (${deflection_distribution} = "Number of sessions that were successfully handled with bot end to end" or  ${deflection_distribution} = "Number of sessions that were partially handled by the bot and had atleast one query unanswered but not transfered to live agent") then "Fully Deflected"
+          when ${deflection_distribution} = "Number of sessions that were transferred to live agent and has atleast one fallback query" then "Partially Deflected"
+          else  "Not Deflected"
           end ;;
   }
 
