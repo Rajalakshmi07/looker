@@ -203,7 +203,14 @@ view: dialogflow_cleaned_logs {
     sql: ${Handled_count}/${count} ;;
     value_format_name: percent_2
   }
-
+  measure: fallback_count{
+    type: sum
+    sql:  case when(${is_fallback}) then 1 else 0 ;;
+  }
+  measure: agent_count {
+    type: sum
+    sql: case when ${intent_triggered} = "LiveAgentTransfer" then 1 else 0 ;;
+  }
 
   measure: count {
     type: count
