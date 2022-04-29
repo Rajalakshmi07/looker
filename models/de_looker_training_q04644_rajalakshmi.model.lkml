@@ -18,4 +18,9 @@ explore: dialogflow_cleaned_logs {
     relationship: many_to_one
     sql_on: ${dialogflow_cleaned_logs.session_id}=${time_view.session_id}  ;;
   }
+  join: deflection {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${dialogflow_cleaned_logs.session_id}=${deflection.session_id}  ;;
+  }
 }
