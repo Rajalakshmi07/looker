@@ -203,31 +203,7 @@ view: dialogflow_cleaned_logs {
     sql: ${Handled_count}/${count} ;;
     value_format_name: percent_2
   }
-  dimension: fallback_count{
-    type: number
-    sql:  case when(${is_fallback}) then 1 else 0 ;;
-  }
-  dimension: agent_count {
-    type: number
-    sql: case when ${intent_triggered} = "LiveAgentTransfer" then 1 else 0 ;;
-  }
-  dimension: deflection_distribution {
-    type: string
-    sql:  case
-          when ${fallback_count}=0 and ${agent_count}=0 then "Number of sessions that were successfully handled with bot end to end"
-          when ${fallback_count}>=1 and ${agent_count}=0 then "Number of sessions that were partially handled by the bot and had atleast one query unanswered but not transfered to live agent"
-          when ${fallback_count}>=1 and ${agent_count} >=1 then "Number of sessions that were transferred to live agent and has atleast one fallback query"
-          when ${fallback_count}=0 and ${agent_count} >=1 then "Number of sessions that were transferred to live agent as per the expected flow but had not fallback query"
-          end ;;
-  }
-  dimension : deflection_rate{
-    type: string
-    sql:  case
-          when ${deflection_distribution} = "Number of sessions that were successfully handled with bot end to end" or  ${deflection_distribution} = "Number of sessions that were partially handled by the bot and had atleast one query unanswered but not transfered to live agent" then "Fully Deflected"
-          when ${deflection_distribution} = "Number of sessions that were transferred to live agent and has atleast one fallback query" then "Partially Deflected"
-          when ${deflection_distribution} = "Number of sessions that were transferred to live agent as per the expected flow but had not fallback query" then "Not Deflected"
-          end ;;
-  }
+
 
   measure: count {
     type: count
