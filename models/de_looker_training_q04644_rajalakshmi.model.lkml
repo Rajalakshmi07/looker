@@ -23,4 +23,11 @@ explore: dialogflow_cleaned_logs {
     relationship: many_to_one
     sql_on: ${dialogflow_cleaned_logs.session_id}=${deflection.session_id}  ;;
   }
+  join: intent_level_view {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${dialogflow_cleaned_logs.intent_triggered} != ${intent_level_view.intents}
+    and
+    ${dialogflow_cleaned_logs.session_id}=${intent_level_view.session_id};;
+  }
 }
