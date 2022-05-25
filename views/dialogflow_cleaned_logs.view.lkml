@@ -179,7 +179,7 @@ view: dialogflow_cleaned_logs {
   }
   measure: Avg_ses_per_day{
     type:number
-    sql: if(${distinct_session_id}/ NULLIF(${distinct_date},0),0) ;;
+    sql: ${distinct_session_id}/ NULLIF(${distinct_date},0) ;;
   }
   measure: queries_count{
     type:count_distinct
@@ -187,7 +187,7 @@ view: dialogflow_cleaned_logs {
   }
   measure: Avg_Query_per_ses{
     type:number
-    sql: if(${queries_count}/NULLIF(${distinct_session_id},0),0) ;;
+    sql: ${queries_count}/NULLIF(${distinct_session_id},0) ;;
   }
   measure: Unhandled_count {
     type: number
@@ -205,7 +205,7 @@ view: dialogflow_cleaned_logs {
   }
   measure: Sucess_rate {
     type: number
-    sql: if(${Handled_count}/${count},0) ;;
+    sql: ${Handled_count}/${count} ;;
     value_format_name: percent_2
   }
   measure: fallback_count{
