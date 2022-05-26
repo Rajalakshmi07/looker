@@ -187,25 +187,25 @@ view: dialogflow_cleaned_logs {
   }
   measure: Avg_Query_per_ses{
     type:number
-    sql: ${queries_count}/NULLIF(${distinct_session_id},0) ;;
+    sql: COALESCE(${queries_count}/NULLIF(${distinct_session_id},0),0) ;;
   }
   measure: Unhandled_count {
     type: number
-    sql: sum (case
+    sql: COALESCE(sum (case
            when ${is_fallback} then 1
            else 0
-           end ) ;;
+           end ),0) ;;
   }
   measure: Handled_count {
     type: number
-    sql: sum (case
+    sql: COALESCE(sum (case
            when ${is_fallback} then 0
            else 1
-           end ) ;;
+           end ),0) ;;
   }
   measure: Sucess_rate {
     type: number
-    sql: ${Handled_count}/${count} ;;
+    sql: COALESCE(${Handled_count}/${count},0) ;;
     value_format_name: percent_2
   }
   measure: fallback_count{
