@@ -55,7 +55,7 @@ view: time_view {
 
   measure: avg_duration {
     type: average
-    sql:(${session_duration_sec}/86400.0) ;;
+    sql:COALESCE((${session_duration_sec}/86400.0),0) ;;
     value_format: "[mm]\" m \"ss\" s\""
   }
 

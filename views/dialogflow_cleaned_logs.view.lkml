@@ -205,7 +205,7 @@ view: dialogflow_cleaned_logs {
   }
   measure: Sucess_rate {
     type: number
-    sql: COALESCE(${Handled_count}/${count},0) ;;
+    sql: COALESCE(${Handled_count}/NULLIF(${count},0),0) ;;
     value_format_name: percent_2
   }
   measure: fallback_count{
