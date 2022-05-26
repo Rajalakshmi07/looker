@@ -179,7 +179,7 @@ view: dialogflow_cleaned_logs {
   }
   measure: Avg_ses_per_day{
     type:number
-    sql: NULLIF(${distinct_session_id}/ NULLIF(${distinct_date},0),0) ;;
+    sql: ${distinct_session_id}/ NULLIF(${distinct_date},0) ;;
   }
   measure: queries_count{
     type:count_distinct
