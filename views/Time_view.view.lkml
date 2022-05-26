@@ -48,7 +48,7 @@ view: time_view {
   measure: avg_duration_hidden {
     type: average_distinct
     sql_distinct_key: ${session_id} ;;
-    sql:(${session_duration_sec}/86400.0) ;;
+    sql:COALESCE((${session_duration_sec}/86400.0),0) ;;
     value_format: "[mm]\" m \"ss\" s\""
     hidden: yes
   }

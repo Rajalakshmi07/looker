@@ -67,7 +67,7 @@ view: session_level_info {
 
   measure: avg_session_duration {
     type: average
-    sql:(${session_duration}/86400.0) ;;
+    sql:COALESCE((${session_duration}/86400.0),0) ;;
     value_format: "[mm]\" m \"ss\" s\""
   }
 
